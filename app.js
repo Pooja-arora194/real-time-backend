@@ -15,7 +15,6 @@ socketInit(io);
 app.use(cors());
 app.use(express.json());
 
-app.set("io", io);
 
 // ✅ SOCKET CONNECTION
 io.on("connection", (socket) => {
