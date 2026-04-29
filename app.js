@@ -14,23 +14,10 @@ const io = new Server(server, {
 app.set("io", io);
 connectDB();
 socketInit(io);
-const allowedOrigins = [
-  "http://localhost:3000",
-  "https://your-frontend.vercel.app"
-];
-
 app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("CORS not allowed"));
-    }
-  },
+  origin: "http://localhost:3000",
   credentials: true
 }));
-
-app.options("*", cors());
 app.use(express.json());
 
 app.get("/", (req, res) => {
