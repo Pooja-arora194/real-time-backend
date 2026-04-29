@@ -15,7 +15,10 @@ app.set("io", io);
 connectDB();
 socketInit(io);
 app.use(cors({
-  origin: "http://localhost:3000",
+  origin: [
+    "http://localhost:3000",
+    "https://real-time-frontend.netlify.app"
+  ],
   credentials: true
 }));
 app.use(express.json());
