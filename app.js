@@ -46,6 +46,4 @@ app.use("/api/tasks", require("./routes/taskRoute"));
 app.use(errorHandler);
 
 
-server.listen(process.env.PORT, () =>
-  console.log("Server running on " + process.env.PORT),
-);
+
