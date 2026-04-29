@@ -45,5 +45,7 @@ app.use("/api/projects", require("./routes/projectRoute"));
 app.use("/api/tasks", require("./routes/taskRoute"));
 app.use(errorHandler);
 
-
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
 
