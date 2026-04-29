@@ -8,14 +8,29 @@ const socketInit = require("./socket");
 const errorHandler = require("./middleware/errorHandler");
 const app = express();
 const server = http.createServer(app);
-const io = new Server(server, { cors: { origin: "*" } });
+const io = new Server(server, {
+  cors: { origin: "*" }
+});
 app.set("io", io);
 connectDB();
 socketInit(io);
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://your-frontend.vercel.app"
+];
+
 app.use(cors({
-  origin: true,
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("CORS not allowed"));
+    }
+  },
   credentials: true
 }));
+
+app.options("*", cors());
 app.use(express.json());
 
 app.get("/", (req, res) => {
