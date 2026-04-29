@@ -43,8 +43,8 @@ io.on("connection", (socket) => {
 app.use("/api/auth", require("./routes/authRoute"));
 app.use("/api/projects", require("./routes/projectRoute"));
 app.use("/api/tasks", require("./routes/taskRoute"));
-app.use(errorHandler);
-
+app.use(errorHandler); 
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
