@@ -13,10 +13,7 @@ app.set("io", io);
 connectDB();
 socketInit(io);
 app.use(cors({
-  origin: [
-    "http://localhost:3000",
-  ],
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  origin: true,
   credentials: true
 }));
 app.use(express.json());
