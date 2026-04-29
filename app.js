@@ -15,7 +15,9 @@ socketInit(io);
 app.use(cors());
 app.use(express.json());
 
-
+app.get("/", (req, res) => {
+  res.send("API is running 🚀");
+});
 // ✅ SOCKET CONNECTION
 io.on("connection", (socket) => {
   console.log("CONNECTED:", socket.user?.id);
