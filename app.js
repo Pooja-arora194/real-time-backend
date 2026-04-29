@@ -12,7 +12,13 @@ const io = new Server(server, { cors: { origin: "*" } });
 app.set("io", io);
 connectDB();
 socketInit(io);
-app.use(cors());
+app.use(cors({
+  origin: [
+    "http://localhost:3000",
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  credentials: true
+}));
 app.use(express.json());
 
 app.get("/", (req, res) => {
