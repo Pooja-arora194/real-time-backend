@@ -1,4 +1,4 @@
-const Task = require("../model/Task");
+const Task = require("../model/task");
 exports.create = (data) =>
   Task.create(data).then((t) => t.populate("assignedTo", "name email"));
 
